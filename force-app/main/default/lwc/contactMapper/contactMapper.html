@@ -1,0 +1,11 @@
+<template>
+    <lightning-datatable
+        key-field="Id"
+        data={salesforceContacts}
+        columns={columns}
+        onrowselection={getSelectedName}>
+    </lightning-datatable>
+
+    <lightning-map map-markers={mapMarkers}>
+    </lightning-map>
+</template>
