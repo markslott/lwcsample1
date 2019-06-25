@@ -1,10 +1,8 @@
-public with sharing class ContactMapperController {
-    public ContactMapperController() {
-
-    }
+public inherited sharing class ContactMapperController {
+    public ContactMapperController() {}
 
     @AuraEnabled(cacheable=true)
-    public static string getContacts(){
+    public static List<Contact> getContacts(){
         return [SELECT Id,MailingCity,MailingCountry,MailingPostalCode,MailingState,MailingStreet,FirstName,LastName,Email,Phone 
                 FROM Contact
                 WHERE MailingPostalCode != null

@@ -3,10 +3,9 @@ import getContacts from '@salesforce/apex/ContactMapperController.getContacts';
 
 export default class ContactMapper extends LightningElement {
 
-    @track data;
     @track mapMarkers = [];
 
-    @wire(getContacts, {}) salesforceContacts; 
+    @wire(getContacts) salesforceContacts; 
 
     xform = contacts => {
         var markers = [];
