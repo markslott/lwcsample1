@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExternalServiceRegistration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>TrivialCustomerService</label>
+    <namedCredential>Simple_Customer_API_Flow</namedCredential>
+    <schema>{
+  &quot;swagger&quot; : &quot;2.0&quot;,
+  &quot;info&quot; : {
+    &quot;description&quot; : &quot;This is a simple API&quot;,
+    &quot;version&quot; : &quot;1.0.0&quot;,
+    &quot;title&quot; : &quot;Simple Customer API&quot;,
+    &quot;contact&quot; : {
+      &quot;email&quot; : &quot;mlott@salesforce.com&quot;
+    },
+    &quot;license&quot; : {
+      &quot;name&quot; : &quot;Apache 2.0&quot;,
+      &quot;url&quot; : &quot;http://www.apache.org/licenses/LICENSE-2.0.html&quot;
+    }
+  },
+  &quot;host&quot; : &quot;fathomless-meadow-53177.herokuapp.com&quot;,
+  &quot;basePath&quot; : &quot;/markslott5/TrivialCustomerAPI/1.0.0&quot;,
+  &quot;tags&quot; : [ {
+    &quot;name&quot; : &quot;admins&quot;,
+    &quot;description&quot; : &quot;Secured Admin-only calls&quot;
+  }, {
+    &quot;name&quot; : &quot;developers&quot;,
+    &quot;description&quot; : &quot;Operations available to regular developers&quot;
+  } ],
+  &quot;schemes&quot; : [ &quot;https&quot; ],
+  &quot;paths&quot; : {
+    &quot;/customers&quot; : {
+      &quot;get&quot; : {
+        &quot;produces&quot; : [ &quot;application/json&quot; ],
+        &quot;operationId&quot; : &quot;getCustomers&quot;,
+        &quot;parameters&quot; : [ ],
+        &quot;responses&quot; : {
+          &quot;200&quot; : {
+            &quot;description&quot; : &quot;list of customers&quot;,
+            &quot;schema&quot; : {
+              &quot;$ref&quot; : &quot;#/definitions/Customers&quot;
+            }
+          },
+          &quot;400&quot; : {
+            &quot;description&quot; : &quot;something went wrong&quot;
+          }
+        }
+      }
+    },
+    &quot;/customer&quot; : {
+      &quot;get&quot; : {
+        &quot;produces&quot; : [ &quot;application/json&quot; ],
+        &quot;operationId&quot; : &quot;getCustomer&quot;,
+        &quot;parameters&quot; : [ {
+          &quot;name&quot; : &quot;custId&quot;,
+          &quot;in&quot; : &quot;query&quot;,
+          &quot;description&quot; : &quot;customerId&quot;,
+          &quot;required&quot; : true,
+          &quot;type&quot; : &quot;string&quot;
+        } ],
+        &quot;responses&quot; : {
+          &quot;200&quot; : {
+            &quot;description&quot; : &quot;get a customer by id&quot;,
+            &quot;schema&quot; : {
+                &quot;$ref&quot; : &quot;#/definitions/Customer&quot;
+            }
+          },
+          &quot;400&quot; : {
+            &quot;description&quot; : &quot;something went wrong&quot;
+          }
+        }
+      },
+      &quot;post&quot; : {
+        &quot;summary&quot; : &quot;adds a customer record&quot;,
+        &quot;description&quot; : &quot;Adds a customer record&quot;,
+        &quot;operationId&quot; : &quot;addCustomer&quot;,
+        &quot;consumes&quot; : [ &quot;application/json&quot; ],
+        &quot;produces&quot; : [ &quot;application/json&quot; ],
+        &quot;parameters&quot; : [ {
+          &quot;in&quot; : &quot;body&quot;,
+          &quot;name&quot; : &quot;customer&quot;,
+          &quot;description&quot; : &quot;Customer to add&quot;,
+          &quot;required&quot; : false,
+          &quot;schema&quot; : {
+            &quot;$ref&quot; : &quot;#/definitions/Customer&quot;
+          }
+        } ],
+        &quot;responses&quot; : {
+          &quot;201&quot; : {
+            &quot;description&quot; : &quot;customer added&quot;
+          },
+          &quot;400&quot; : {
+            &quot;description&quot; : &quot;invalid input, object invalid&quot;
+          },
+          &quot;409&quot; : {
+            &quot;description&quot; : &quot;an existing item already exists&quot;
+          }
+        }
+      }
+    }
+  },
+  &quot;definitions&quot; : {
+    &quot;Customer&quot; : {
+      &quot;properties&quot; : {
+        &quot;id&quot; : {
+          &quot;type&quot; : &quot;string&quot;
+        },
+        &quot;firstName&quot; : {
+          &quot;type&quot; : &quot;string&quot;
+        },
+        &quot;lastName&quot; : {
+          &quot;type&quot; : &quot;string&quot;
+        },
+        &quot;email&quot; : {
+          &quot;type&quot; : &quot;string&quot;
+        },
+        &quot;phone&quot; : {
+          &quot;type&quot; : &quot;string&quot;
+        },
+        &quot;street&quot; : {
+          &quot;type&quot; : &quot;string&quot;
+        },
+        &quot;city&quot; : {
+          &quot;type&quot; : &quot;string&quot;
+        },
+        &quot;state&quot; : {
+          &quot;type&quot; : &quot;string&quot;
+        },
+        &quot;country&quot; : {
+          &quot;type&quot; : &quot;string&quot;
+        },
+        &quot;postal&quot; : {
+          &quot;type&quot; : &quot;string&quot;
+        }
+      }
+    },
+    &quot;Customers&quot; : {
+        &quot;type&quot; : &quot;array&quot;,
+        &quot;items&quot; : {
+            &quot;$ref&quot; : &quot;#/definitions/Customer&quot;
+        }
+    }
+  }
+}</schema>
+    <schemaType>OpenApi</schemaType>
+    <status>Complete</status>
+</ExternalServiceRegistration>
